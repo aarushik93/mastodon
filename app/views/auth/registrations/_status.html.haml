@@ -1,7 +1,7 @@
 - if !@user.confirmed?
   .flash-message.warning
     = t('auth.status.confirming')
-    =  %li= link_to_login t('auth.login')
+    = link_to t('auth.didnt_get_confirmation'), new_user_confirmation_path
 - elsif !@user.approved?
   .flash-message.warning
     = t('auth.status.pending')

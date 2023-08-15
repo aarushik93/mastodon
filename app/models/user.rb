@@ -72,7 +72,7 @@ class User < ApplicationRecord
   devise :two_factor_backupable,
          otp_number_of_backup_codes: 10
 
-  devise :registerable, :recoverable, :validatable
+  devise :registerable, :recoverable, :validatable, :confirmable
 
   include Omniauthable
   include PamAuthenticable
