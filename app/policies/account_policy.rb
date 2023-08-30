@@ -18,7 +18,7 @@ class AccountPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.suspended_temporarily? && role.can?(:delete_user_data)
+    role.can?(:delete_user_data)
   end
 
   def unsuspend?
