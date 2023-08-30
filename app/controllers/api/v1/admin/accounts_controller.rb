@@ -66,7 +66,6 @@ class Api::V1::Admin::AccountsController < Api::BaseController
   end
 
   def destroy
-    authorize @account, :destroy?
     Admin::AccountDeletionWorker.perform_async(@account.id)
     render_empty
   end
