@@ -74,7 +74,7 @@ class DeleteAccountService < BaseService
   # @option [Time]    :suspended_at Only applicable when :reserve_username is true
   def call(account, **options)
     @account = account
-    @options = { reserve_username: true, reserve_email: true }.merge(options)
+    @options = { reserve_username: false, reserve_email: false }.merge(options)
 
     if @account.local? && @account.user_unconfirmed_or_pending?
       @options[:reserve_email]     = false
