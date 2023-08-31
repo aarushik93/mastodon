@@ -209,7 +209,7 @@ namespace :api, format: false do
     end
 
     namespace :admin do
-      resources :accounts, only: [:index, :show], param: :email do
+      resources :accounts, only: [:index, :show] do
         member do
           post :enable
           post :unsensitive
