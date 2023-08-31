@@ -209,7 +209,7 @@ namespace :api, format: false do
     end
 
     namespace :admin do
-      resources :accounts, only: [:index, :show, :destroy] do
+      resources :accounts, only: [:index, :show], param: :email do
         member do
           post :enable
           post :unsensitive
@@ -221,6 +221,8 @@ namespace :api, format: false do
 
         resource :action, only: [:create], controller: 'account_actions'
       end
+
+      delete 'accounts/:email', to: 'accounts#destroy', as: :destroy_user_account
 
       resources :reports, only: [:index, :update, :show] do
         member do
