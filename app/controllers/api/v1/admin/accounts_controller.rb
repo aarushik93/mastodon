@@ -66,7 +66,7 @@ class Api::V1::Admin::AccountsController < Api::BaseController
   end
 
   def destroy
-    @account = Account.find_by!(email: params[:email])
+    @account = Account.find_by!(username: params[:username])
     Admin::AccountDeletionWorker.perform_async(@account.id)
     render_empty
   end

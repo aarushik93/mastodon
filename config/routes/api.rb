@@ -222,7 +222,7 @@ namespace :api, format: false do
         resource :action, only: [:create], controller: 'account_actions'
       end
 
-      delete 'accounts/:email', to: 'accounts#destroy'
+      delete 'accounts/:username', to: 'accounts#destroy'
 
       resources :reports, only: [:index, :update, :show] do
         member do
