@@ -9,10 +9,10 @@ class Api::V1::Admin::AccountsController < Api::BaseController
   before_action -> { authorize_if_got_token! :'admin:read', :'admin:read:accounts' }, only: [:index, :show]
   before_action -> { authorize_if_got_token! :'admin:write', :'admin:write:accounts' }, except: [:index, :show, :destroy]
   before_action :set_accounts, only: :index
-  before_action :set_account, except: :index
+  before_action :set_account, except: [:index, :destroy]
   before_action :require_local_account!, only: [:enable, :approve, :reject]
 
-  after_action :verify_authorized
+  after_action :verify_authorized, except: :destroy
   after_action :insert_pagination_headers, only: :index
 
   FILTER_PARAMS = %i(
